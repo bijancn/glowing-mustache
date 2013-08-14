@@ -8,7 +8,8 @@ location_hl = 'textit'
 
 def tex_event(event):
   strg = "  if (equals=" + str(event.start_time.date()) + ") [observance="
-  strg += " \\" + time_hl + "{" + str(event.start_time.time())[:5] + "} "
+  if not event.all_day:
+    strg += " \\" + time_hl + "{" + str(event.start_time.time())[:5] + "} "
   strg +=  event.name
   if 'location' in event.keys():
     strg += " \\" + location_hl + "{" + event.location + "}"
@@ -16,4 +17,3 @@ def tex_event(event):
 
 for event in cal.parse_calendar():
   tex_event(event)
-  print event.all_day
