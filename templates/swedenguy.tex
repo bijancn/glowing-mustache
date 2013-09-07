@@ -1,18 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Welcome to writeLaTeX --- just edit your LaTeX on the left,
-% and we'll compile it for you on the right. If you give 
-% someone the link to this page, they can edit at the same
-% time. See the help menu above for more info. Enjoy!
-%
-% Note: you can export the pdf to see the result at full
-% resolution.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Birthday calendar
-% Author: Hakon Malmedal
 \documentclass[fontsize=20pt]{scrartcl}
-\usepackage[norsk]{babel}
+\usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -20,9 +7,7 @@
 \pagestyle{empty}
 \usepackage{graphicx}
 \usepackage{tikz}
-%%%<
 \usepackage{verbatim}
-%%%>
 \begin{comment}
 :Title: Birthday calendar
 :Tags: Calendar library;Calendars
@@ -41,8 +26,8 @@
       \pgfmathsetlength{\pgf@ya}{\tikz@lib@cal@yshift}%
       \pgfmathsetlength\pgf@xa{\tikz@lib@cal@xshift}%
       \pgftransformyshift{-\pgf@ya}
-      \foreach \d/\l in {0/Montag,1/Dienstag,2/Mittwoch,3/Donnerstag,%
-                         4/Freitag,5/Samstag,6/Sonntag} {
+      \foreach \d/\l in {0/Monday,1/Tuesday,2/Wednesday,3/Thursday,%
+                         4/Friday,5/Saturday,6/Sunday} {
         \pgf@xa=\d\pgf@xa%
         \pgftransformxshift{\pgf@xa-\cellwidth/2}%
         \pgftransformyshift{\pgf@ya}%
@@ -54,12 +39,13 @@
 \makeatother%
 %% End
 
-%% Adapted from pgf source
-\def\pgfcalendarmonthname#1{%
-  \translate{\ifcase#1\or Januar\or Februar\or Mars\or April\or
-    Mai\or Juni\or Juli\or August\or September\or Oktober\or
-    November\or Desember\fi}%
-}
+% Not necessary for english
+% Adapted from pgf source
+%\def\pgfcalendarmonthname#1{%
+  %\translate{\ifcase#1\or January\or February\or March\or April\or
+    %May\or June\or July\or August\or September\or Oktober\or
+    %November\or Desember\fi}%
+%}
 
 \makeatletter
 \tikzstyle{month label above centered}=[%
@@ -125,132 +111,132 @@
  }
 %% End
 
-%% Knuth's AoCP, vol 1, 2nd ed, pp 155--156
-\int_new:N \l_easter_Y_int
-\int_new:N \l_easter_G_int
-\int_new:N \l_easter_C_int
-\int_new:N \l_easter_X_int
-\int_new:N \l_easter_Z_int
-\int_new:N \l_easter_D_int
-\int_new:N \l_easter_E_int
-\int_new:N \l_easter_N_int
-\int_new:N \l_easter_M_int
-\int_new:N \l_easter_julian_day_int
+%%% Knuth's AoCP, vol 1, 2nd ed, pp 155--156
+%\int_new:N \l_easter_Y_int
+%\int_new:N \l_easter_G_int
+%\int_new:N \l_easter_C_int
+%\int_new:N \l_easter_X_int
+%\int_new:N \l_easter_Z_int
+%\int_new:N \l_easter_D_int
+%\int_new:N \l_easter_E_int
+%\int_new:N \l_easter_N_int
+%\int_new:N \l_easter_M_int
+%\int_new:N \l_easter_julian_day_int
 
-\cs_new:Nn \easter_sunday:n {
+%\cs_new:Nn \easter_sunday:n {
 
-  \int_set:Nn \l_easter_Y_int { #1 }
+  %\int_set:Nn \l_easter_Y_int { #1 }
 
-  \int_set:Nn \l_easter_G_int {
-    \int_mod:nn { \l_easter_Y_int } { 19 } + 1
-  }
+  %\int_set:Nn \l_easter_G_int {
+    %\int_mod:nn { \l_easter_Y_int } { 19 } + 1
+  %}
 
-  \int_set:Nn \l_easter_C_int {
-    \int_div_truncate:nn { \l_easter_Y_int } { 100 } + 1
-  }
+  %\int_set:Nn \l_easter_C_int {
+    %\int_div_truncate:nn { \l_easter_Y_int } { 100 } + 1
+  %}
 
-  \int_set:Nn \l_easter_X_int {
-    \int_div_truncate:nn { 3 * \l_easter_C_int } { 4 } - 12
-  }
+  %\int_set:Nn \l_easter_X_int {
+    %\int_div_truncate:nn { 3 * \l_easter_C_int } { 4 } - 12
+  %}
 
-  \int_set:Nn \l_easter_Z_int {
-    \int_div_truncate:nn { 8 * \l_easter_C_int + 5 } { 25 } - 5
-  }
+  %\int_set:Nn \l_easter_Z_int {
+    %\int_div_truncate:nn { 8 * \l_easter_C_int + 5 } { 25 } - 5
+  %}
 
-  \int_set:Nn \l_easter_D_int {
-    \int_div_truncate:nn { 5 * \l_easter_Y_int } { 4 } - \l_easter_X_int - 10
-  }
+  %\int_set:Nn \l_easter_D_int {
+    %\int_div_truncate:nn { 5 * \l_easter_Y_int } { 4 } - \l_easter_X_int - 10
+  %}
 
-  \int_set:Nn \l_easter_E_int {
-    \int_mod:nn { 11 * \l_easter_G_int + 20 + \l_easter_Z_int
-      - \l_easter_X_int } { 30 }
-  }
+  %\int_set:Nn \l_easter_E_int {
+    %\int_mod:nn { 11 * \l_easter_G_int + 20 + \l_easter_Z_int
+      %- \l_easter_X_int } { 30 }
+  %}
 
-  % \int_mod:nn behaves strangely.
-  \int_compare:nNnT { \l_easter_E_int } < { 0 }
-  {
-    \int_add:Nn \l_easter_E_int { 30 }
-  }
+  %% \int_mod:nn behaves strangely.
+  %\int_compare:nNnT { \l_easter_E_int } < { 0 }
+  %{
+    %\int_add:Nn \l_easter_E_int { 30 }
+  %}
 
-  \int_compare:nNnTF { \l_easter_E_int } = { 25 }
-  { % true
-    \int_compare:nNnT { \l_easter_G_int } > { 11 }
-    { % true
-      \int_incr:N \l_easter_E_int
-    }
-  }
-  { % false
-    \int_compare:nNnT { \l_easter_E_int } = { 24 }
-    { % true
-      \int_incr:N \l_easter_E_int
-    }
-  }
+  %\int_compare:nNnTF { \l_easter_E_int } = { 25 }
+  %{ % true
+    %\int_compare:nNnT { \l_easter_G_int } > { 11 }
+    %{ % true
+      %\int_incr:N \l_easter_E_int
+    %}
+  %}
+  %{ % false
+    %\int_compare:nNnT { \l_easter_E_int } = { 24 }
+    %{ % true
+      %\int_incr:N \l_easter_E_int
+    %}
+  %}
 
-  \int_set:Nn \l_easter_N_int { 44 - \l_easter_E_int }
+  %\int_set:Nn \l_easter_N_int { 44 - \l_easter_E_int }
 
-  \int_compare:nNnT { \l_easter_N_int } < { 21 }
-  { % true
-    \int_add:Nn \l_easter_N_int { 30 }
-  }
+  %\int_compare:nNnT { \l_easter_N_int } < { 21 }
+  %{ % true
+    %\int_add:Nn \l_easter_N_int { 30 }
+  %}
 
-  \int_add:Nn \l_easter_N_int {
-    7 - \int_mod:nn { \l_easter_D_int + \l_easter_N_int } { 7 }
-  }
+  %\int_add:Nn \l_easter_N_int {
+    %7 - \int_mod:nn { \l_easter_D_int + \l_easter_N_int } { 7 }
+  %}
 
-  \int_compare:nNnTF { \l_easter_N_int } > { 31 }
-  { % true
-    \int_sub:Nn \l_easter_N_int { 31 }
-    \int_set:Nn \l_easter_M_int { 4 } % April
-  }
-  { % false
-    \int_set:Nn \l_easter_M_int { 3 } % March
-  }
+  %\int_compare:nNnTF { \l_easter_N_int } > { 31 }
+  %{ % true
+    %\int_sub:Nn \l_easter_N_int { 31 }
+    %\int_set:Nn \l_easter_M_int { 4 } % April
+  %}
+  %{ % false
+    %\int_set:Nn \l_easter_M_int { 3 } % March
+  %}
 
-  \pgfcalendardatetojulian { \l_easter_Y_int -
-     \l_easter_M_int - \l_easter_N_int
-  } { \l_easter_julian_day_int }
+  %\pgfcalendardatetojulian { \l_easter_Y_int -
+     %\l_easter_M_int - \l_easter_N_int
+  %} { \l_easter_julian_day_int }
 
-}
+%}
 
-\pgfkeys{/pgf/calendar/Easter/.default = 0}
-\pgfkeys{/pgf/calendar/Easter/.code =
-  {
-    \easter_sunday:n { \pgfcalendarifdateyear }
-    \int_compare:nNnT { \pgfcalendarifdatejulian }
-    =  {\l_easter_julian_day_int + #1}
-    { \pgfcalendarmatchestrue }
-  }
-}
+%\pgfkeys{/pgf/calendar/Easter/.default = 0}
+%\pgfkeys{/pgf/calendar/Easter/.code =
+  %{
+    %\easter_sunday:n { \pgfcalendarifdateyear }
+    %\int_compare:nNnT { \pgfcalendarifdatejulian }
+    %=  {\l_easter_julian_day_int + #1}
+    %{ \pgfcalendarmatchestrue }
+  %}
+%}
 
-\int_new:N \l_advent_Y_int
-\int_new:N \l_advent_xmas_julian_day_int
-\int_new:N \l_advent_xmas_week_day_int
-\int_new:N \l_advent_julian_day_int
+%\int_new:N \l_advent_Y_int
+%\int_new:N \l_advent_xmas_julian_day_int
+%\int_new:N \l_advent_xmas_week_day_int
+%\int_new:N \l_advent_julian_day_int
 
-\cs_new:Nn \advent_sunday:n {
+%\cs_new:Nn \advent_sunday:n {
 
-  \int_set:Nn \l_advent_Y_int { #1 }
+  %\int_set:Nn \l_advent_Y_int { #1 }
 
-  \pgfcalendardatetojulian { \l_advent_Y_int - 12 - 25 } {
-    \l_advent_xmas_julian_day_int }
+  %\pgfcalendardatetojulian { \l_advent_Y_int - 12 - 25 } {
+    %\l_advent_xmas_julian_day_int }
 
-  \pgfcalendarjuliantoweekday { \l_advent_xmas_julian_day_int } {
-    \l_advent_xmas_week_day_int }
+  %\pgfcalendarjuliantoweekday { \l_advent_xmas_julian_day_int } {
+    %\l_advent_xmas_week_day_int }
 
-  \int_set:Nn \l_advent_julian_day_int {
-    \l_advent_xmas_julian_day_int - \l_advent_xmas_week_day_int - 22 }
+  %\int_set:Nn \l_advent_julian_day_int {
+    %\l_advent_xmas_julian_day_int - \l_advent_xmas_week_day_int - 22 }
 
-}
+%}
 
-\pgfkeys{/pgf/calendar/Advent/.default = 0}
-\pgfkeys{/pgf/calendar/Advent/.code =
-  {
-    \advent_sunday:n { \pgfcalendarifdateyear }
-    \int_compare:nNnT { \pgfcalendarifdatejulian }
-    =  {\l_advent_julian_day_int + #1}
-    { \pgfcalendarmatchestrue }
-  }
-}
+%\pgfkeys{/pgf/calendar/Advent/.default = 0}
+%\pgfkeys{/pgf/calendar/Advent/.code =
+  %{
+    %\advent_sunday:n { \pgfcalendarifdateyear }
+    %\int_compare:nNnT { \pgfcalendarifdatejulian }
+    %=  {\l_advent_julian_day_int + #1}
+    %{ \pgfcalendarmatchestrue }
+  %}
+%}
 
 %% http://www.tondering.dk/claus/cal/week.php#calcweekno
 \int_new:N \l_week_number_year_int
@@ -369,16 +355,16 @@
 \definecolor{blaa}{rgb}{0,0.156862745098,0.407843137255}
 
 \newsavebox{\flagNO}
-\savebox{\flagNO}{
-\begin{tikzpicture}
-  \fill[roed] rectangle (6pt,6pt);
-  \fill[roed,yshift=10pt] rectangle (6pt,6pt);
-  \fill[roed,xshift=10pt] rectangle (12pt,6pt);
-  \fill[roed,xshift=10pt,yshift=10pt] rectangle (12pt,6pt);
-  \fill[blaa,yshift=7pt] rectangle (22pt,2pt);
-  \fill[blaa,xshift=7pt] rectangle (2pt,16pt);
-\end{tikzpicture}
-}
+%\savebox{\flagNO}{
+%\begin{tikzpicture}
+  %\fill[roed] rectangle (6pt,6pt);
+  %\fill[roed,yshift=10pt] rectangle (6pt,6pt);
+  %\fill[roed,xshift=10pt] rectangle (12pt,6pt);
+  %\fill[roed,xshift=10pt,yshift=10pt] rectangle (12pt,6pt);
+  %\fill[blaa,yshift=7pt] rectangle (22pt,2pt);
+  %\fill[blaa,xshift=7pt] rectangle (2pt,16pt);
+%\end{tikzpicture}
+%}
 
 \pgfkeys{/tikz/week~number/.code =
   {
@@ -392,12 +378,12 @@
 
 \ExplSyntaxOff
 
-\pgfkeys{/tikz/flag-flying day/.code =
-  {
-    \draw (-\cellwidth,0) node [above right,font=\Huge]
-    {\resizebox{!}{0.8ex}{\usebox{\flagNO}}};
-  }
-}
+%\pgfkeys{/tikz/flag-flying day/.code =
+  %{
+    %\draw (-\cellwidth,0) node [above right,font=\Huge]
+    %{\resizebox{!}{0.8ex}{\usebox{\flagNO}}};
+  %}
+%}
 
 \pgfkeys{/tikz/observance/.code =
   {
@@ -435,82 +421,6 @@
 
 \centering
 
-\begin{tikzpicture}[thick]
-  \calendar[dates=2012-05-01 to 2012-06-last,
-            week list,
-            month label above centered,
-            month text=\textsc{\%mt \%y0},
-            day headings={font=\footnotesize},
-            day letter headings]
-  if (Monday,
-      equals=01-01,
-      equals=02-01,
-      equals=03-01,
-      equals=04-01,
-      equals=05-01,
-      equals=06-01,
-      equals=07-01,
-      equals=08-01,
-      equals=09-01,
-      equals=10-01,
-      equals=11-01,
-      equals=12-01) [week number]
-  if (Sunday,
-      Easter=-3, % Maundy Thursday
-      Easter=-2, % Good Friday
-      Easter,    % Easter Sunday
-      Easter=1,  % Easter Monday
-      Easter=39, % Feast of the Ascension
-      Easter=49, % Pentecost
-      Easter=50, % Whit Monday
-      equals=01-01,
-      equals=05-01,
-      equals=05-17,
-      equals=12-25,
-      equals=12-26) [red]
-  if (equals=01-01,
-      equals=01-21,
-      equals=02-06,
-      equals=02-21,
-      equals=05-01,
-      equals=05-08,
-      equals=05-17,
-      equals=06-07,
-      equals=07-04,
-      equals=07-20,
-      equals=07-29,
-      equals=08-19,
-      equals=12-25,
-      Easter,
-      Easter=49) [flag-flying day]
-  if (equals=01-01) [observance=Første nyttårsdag]
-  if (equals=01-21) [observance=Prinsesse Ingrid Alexandra]
-  if (equals=02-06) [observance=Samefolkets dag]
-  if (equals=02-21) [observance=Kong Harald~V]
-  if (equals=05-01) [observance=Offentlig høytidsdag]
-  if (equals=05-08) [observance=Frigjøringsdagen]
-  if (equals=05-17) [observance=Grunnlovsdag]
-  if (equals=06-07) [observance=Unionsoppløsningen]
-  if (equals=06-23) [observance=Sankthansaften]
-  if (equals=07-04) [observance=Dronning Sonja]
-  if (equals=07-20) [observance=Kronprins Haakon]
-  if (equals=07-29) [observance=Olsok]
-  if (equals=08-19) [observance=Kronprinsesse Mette-Marit]
-  if (equals=10-24) [observance=FN-dagen]
-  if (equals=12-25) [observance=Første juledag]
-  if (equals=12-26) [observance=Andre juledag]
-  if (Easter=-49) [observance=Fastelavnssøndag]
-  if (Easter=-7) [observance=Palmesøndag]
-  if (Easter=-3) [observance=Skjærtorsdag]
-  if (Easter=-2) [observance=Langfredag]
-  if (Easter) [observance=Første påskedag]
-  if (Easter=1) [observance=Andre påskedag]
-  if (Easter=39) [observance=Kristi himmelfartsdag]
-  if (Easter=49) [observance=Første pinsedag]
-  if (Easter=50) [observance=Bijan pinsedag]
-  if (Advent) [observance=Advent]
-  if (equals=05-07) [anniversary={Brahms}{1833}]
-;
-\end{tikzpicture}
+\input{gcal_out.tex}
 
 \end{document}
